@@ -238,12 +238,13 @@ function sync_accounts() {
     setup_aws_credentials
 
     # declare and set some variables
+    local user    
     local iam_users
     local sudo_users
     local local_users
     local intersection
     local removed_users
-    local user
+    
 
     # init group and sudoers from tags
     get_iam_groups_from_tag

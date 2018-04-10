@@ -8,8 +8,8 @@ else
   fi
 fi
 
-if grep -q '#AuthorizedKeysCommandUser root' "$SSHD_CONFIG_FILE"; then
-  sed -i "s:#AuthorizedKeysCommandUser root:AuthorizedKeysCommandUser root:g" "$SSHD_CONFIG_FILE"
+if grep -q '#AuthorizedKeysCommandUser nobody' "$SSHD_CONFIG_FILE"; then
+  sed -i "s:#AuthorizedKeysCommandUser nobody:AuthorizedKeysCommandUser root:g" "$SSHD_CONFIG_FILE"
 else
   if ! grep -q 'AuthorizedKeysCommandUser root' "$SSHD_CONFIG_FILE"; then
     echo "AuthorizedKeysCommandUser root" >> "$SSHD_CONFIG_FILE"
