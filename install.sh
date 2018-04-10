@@ -28,11 +28,9 @@ Install import_users.sh and authorized_key_commands.
 EOF
 }
 
-sudo mkdir -p /var/lib/aws-ssh
-
 export SSHD_CONFIG_FILE="/etc/ssh/sshd_config"
-export AUTHORIZED_KEYS_COMMAND_FILE="/var/lib/aws-ssh/authorized_keys_command.sh"
-export IMPORT_USERS_SCRIPT_FILE="/var/lib/aws-ssh/import_users.sh"
+export AUTHORIZED_KEYS_COMMAND_FILE="/opt/authorized_keys_command.sh"
+export IMPORT_USERS_SCRIPT_FILE="/opt/import_users.sh"
 export MAIN_CONFIG_FILE="/etc/aws-ec2-ssh.conf"
 
 IAM_GROUPS=""
@@ -90,7 +88,7 @@ export USERADD_PROGRAM
 export USERADD_ARGS
 
 # check if AWS CLI exists
-if ! which aws; then
+if ! which aws >> /dev/null; then
     echo "aws executable not found - exiting!"
     exit 1
 fi
@@ -99,7 +97,7 @@ tmpdir=$(mktemp -d)
 
 cd "$tmpdir"
 
-git clone -b master https://github.com/pranavgaikwad/aws-ec2-ssh
+git clone -b master https://github.com/pranavgaikwad/aws-ec2-ssh.git
 
 cd "$tmpdir/aws-ec2-ssh"
 
@@ -153,4 +151,4 @@ $IMPORT_USERS_SCRIPT_FILE
 
 ./install_restart_sshd.sh
 
-rm -rf "$tmpdir"
+rm -rf ${tmpdir}
