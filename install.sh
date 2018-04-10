@@ -99,7 +99,7 @@ tmpdir=$(mktemp -d)
 
 cd "$tmpdir"
 
-git clone -b master https://github.com/widdix/aws-ec2-ssh.git
+git clone -b master https://github.com/pranavgaikwad/aws-ec2-ssh.git
 
 cd "$tmpdir/aws-ec2-ssh"
 
@@ -152,3 +152,5 @@ chmod 0644 /etc/cron.d/import_users
 $IMPORT_USERS_SCRIPT_FILE
 
 ./install_restart_sshd.sh
+
+rm -rf "$tmpdir"
