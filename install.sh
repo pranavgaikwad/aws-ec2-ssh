@@ -99,7 +99,7 @@ tmpdir=$(mktemp -d)
 
 cd "$tmpdir"
 
-git clone -b master https://github.com/pranavgaikwad/aws-ec2-ssh.git
+git clone -b master https://github.com/pranavgaikwad/aws-ec2-ssh
 
 cd "$tmpdir/aws-ec2-ssh"
 
