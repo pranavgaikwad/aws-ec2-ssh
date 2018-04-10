@@ -28,9 +28,11 @@ Install import_users.sh and authorized_key_commands.
 EOF
 }
 
+sudo mkdir -p /var/lib/aws-ssh
+
 export SSHD_CONFIG_FILE="/etc/ssh/sshd_config"
-export AUTHORIZED_KEYS_COMMAND_FILE="/opt/authorized_keys_command.sh"
-export IMPORT_USERS_SCRIPT_FILE="/opt/import_users.sh"
+export AUTHORIZED_KEYS_COMMAND_FILE="/var/lib/aws-ssh/authorized_keys_command.sh"
+export IMPORT_USERS_SCRIPT_FILE="/var/lib/aws-ssh/import_users.sh"
 export MAIN_CONFIG_FILE="/etc/aws-ec2-ssh.conf"
 
 IAM_GROUPS=""
