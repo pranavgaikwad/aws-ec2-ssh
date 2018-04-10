@@ -5,7 +5,7 @@ if [ -z "$1" ]; then
 fi
 
 # check if AWS CLI exists
-if ! which aws; then
+if ! which aws >> /dev/null; then
     echo "aws executable not found - exiting!"
     exit 1
 fi
