@@ -182,7 +182,7 @@ function create_or_update_local_user() {
 
     if ! id "${username}" >/dev/null 2>&1; then
         ${USERADD_PROGRAM} ${USERADD_ARGS} "${username}"
-        /bin/chown -R "${username}:${username}" "$(eval echo ~$username)"
+        #/bin/chown -R "${username}:${username}" "$(eval echo ~$username)"
         log "Created new user ${username}"
     fi
     /usr/sbin/usermod -a -G "${localusergroups}" "${username}"
